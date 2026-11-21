@@ -1,4 +1,4 @@
-# <img src=".github/logo.png" alt="" height="40" align="center"> Costa Cards
+# <img src=".github/logo.png" alt="" height="40" align="absmiddle"> Costa Cards
 
 A deck of cards that lives on everyone's phone. Made for the moments you're traveling with friends and nobody packed a deck: a long layover, a hostel common room, a night train.
 
