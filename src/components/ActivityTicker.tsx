@@ -27,14 +27,14 @@ export function ActivityTicker({ activity }: { activity: ActivityEntry[] }) {
         onClick={() => setExpanded((e) => !e)}
         aria-expanded={expanded}
         aria-label="Recent activity"
-        className={`pointer-events-auto max-w-[92%] rounded-2xl bg-black/35 px-3 py-1 text-left text-xs text-cream/90 backdrop-blur-sm transition-opacity duration-700 ${
+        className={`pointer-events-auto max-w-[92%] rounded-2xl bg-black/25 px-3 py-1 text-left text-xs font-medium text-white transition-opacity duration-700 ${
           faded ? "opacity-35" : "opacity-100"
         }`}
       >
         {expanded ? (
           <ol className="space-y-0.5 py-1">
             {activity.slice(-6).map((a) => (
-              <li key={a.id} className={a.id === latest.id ? "text-cream" : "text-cream/60"}>
+              <li key={a.id} className={a.id === latest.id ? "text-white" : "text-white/60"}>
                 {a.text}
               </li>
             ))}

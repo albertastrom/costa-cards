@@ -20,12 +20,12 @@ function QrCode({ text }: { text: string }) {
   return (
     <svg
       viewBox={`${-pad} ${-pad} ${path.n + pad * 2} ${path.n + pad * 2}`}
-      className="h-52 w-52 rounded-2xl bg-[#f3efe6]"
+      className="h-52 w-52 rounded-xl border border-line bg-white"
       shapeRendering="crispEdges"
       role="img"
       aria-label="QR code for the room link"
     >
-      <path d={path.d} fill="#0b0f0e" />
+      <path d={path.d} fill="#111827" />
     </svg>
   );
 }
@@ -57,10 +57,10 @@ export function InviteSheet({ open, onClose, roomCode }: { open: boolean; onClos
     <Sheet open={open} onClose={onClose} title="Invite to the table">
       <div className="flex flex-col items-center gap-3 pb-2">
         {open && <QrCode text={url} />}
-        <p className="font-mono text-2xl font-bold tracking-[0.35em] text-gold">{roomCode}</p>
+        <p className="font-mono text-2xl font-bold tracking-[0.35em] text-fg">{roomCode}</p>
         <p className="break-all text-center text-xs text-muted">{url}</p>
         <div className="grid w-full gap-2">
-          <ActionButton tone="gold" onClick={copy}>
+          <ActionButton tone="primary" onClick={copy}>
             {copied ? "Copied!" : "Copy link"}
           </ActionButton>
           {canShare && (

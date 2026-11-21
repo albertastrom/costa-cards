@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: "A shared deck of cards for friends around the same table.",
   applicationName: "Costa Cards",
   robots: { index: false, follow: false },
-  appleWebApp: { capable: true, title: "Costa Cards", statusBarStyle: "black-translucent" },
+  appleWebApp: { capable: true, title: "Costa Cards", statusBarStyle: "default" },
   formatDetection: { telephone: false },
 };
 
@@ -21,14 +21,14 @@ export const viewport: Viewport = {
   maximumScale: 1,
   userScalable: false,
   viewportFit: "cover",
-  themeColor: "#0b0f0e",
-  colorScheme: "dark",
+  themeColor: "#ffffff",
+  colorScheme: "light",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col bg-ink text-cream">
+      <body className="flex min-h-full flex-col bg-white text-fg">
         <PreloadResources />
         {children}
       </body>

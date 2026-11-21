@@ -7,7 +7,7 @@ There are no built-in rules. Costa Cards gives you a shared table, a private han
 <p align="center">
   <img src=".github/screenshots/home.png" alt="The home screen: enter your name, then start a new table or join one by code" width="250">
   <img src=".github/screenshots/deal.png" alt="The deck sheet: draw, deal seven to everyone, or turn cards up onto the table" width="250">
-  <img src=".github/screenshots/table.png" alt="A table with four cards played by three players, and your hand of seven along the bottom" width="250">
+  <img src=".github/screenshots/table.png" alt="A flat green table with cards played by three players, including a pile of two, and your hand along the bottom" width="250">
 </p>
 
 ## Features

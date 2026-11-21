@@ -84,14 +84,13 @@ export function TableFelt({
   return (
     <div
       ref={feltRef}
-      className="felt relative min-h-0 flex-1 overflow-hidden rounded-[22px]"
+      className="felt relative isolate min-h-0 flex-1 overflow-hidden"
       onClick={(e) => {
         if (e.target === e.currentTarget || (e.target as HTMLElement).dataset.felt === "1") {
           onFeltTap(e.clientX, e.clientY);
         }
       }}
     >
-      <div className="felt-texture pointer-events-none absolute inset-0" />
       <div
         ref={contentRef}
         data-felt="1"
@@ -99,7 +98,7 @@ export function TableFelt({
         style={{ left: insetX, right: insetX, top: insetY, bottom: insetY }}
       >
         {table.length === 0 && (
-          <p className="pointer-events-none absolute inset-0 grid place-items-center px-6 text-center text-sm text-cream/35">
+          <p className="pointer-events-none absolute inset-0 grid place-items-center px-6 text-center text-sm text-white/45">
             Swipe a card up from your hand to play it
           </p>
         )}
@@ -178,7 +177,7 @@ const TableCardEl = memo(function TableCardEl({
     <div
       className={`table-card card-pop absolute left-0 top-0 rounded-[5px] ${instant ? "no-anim" : ""} ${
         interactive ? "cursor-grab touch-none" : "pointer-events-none"
-      } ${highlight ? "ring-2 ring-gold ring-offset-2 ring-offset-transparent" : ""}`}
+      } ${highlight ? "ring-2 ring-white ring-offset-2 ring-offset-felt" : ""}`}
       style={{
         transform: `translate(${tx}px, ${ty}px)`,
         zIndex: z,

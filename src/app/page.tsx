@@ -26,9 +26,9 @@ export default function HomePage() {
   };
 
   return (
-    <main className="screen-bg relative flex flex-1 flex-col items-center justify-center px-4 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-[max(2.5rem,env(safe-area-inset-top))]">
-      <div className="relative w-full max-w-sm space-y-7">
-        <header className="space-y-4 text-center">
+    <main className="relative flex flex-1 flex-col items-center justify-center px-4 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-[max(2.5rem,env(safe-area-inset-top))]">
+      <div className="relative w-full max-w-xs space-y-8">
+        <header className="space-y-3 text-center">
           <div className="mx-auto flex h-24 items-end justify-center" aria-hidden>
             {(
               [
@@ -48,13 +48,13 @@ export default function HomePage() {
               />
             ))}
           </div>
-          <h1 className="text-3xl font-bold tracking-tight text-cream">Costa Cards</h1>
+          <h1 className="pt-1 text-2xl font-bold tracking-tight text-fg">Costa Cards</h1>
           <p className="text-sm text-muted">A deck of cards for the table you’re already sitting at.</p>
         </header>
 
-        <div className="panel space-y-4 rounded-3xl p-5">
+        <div className="space-y-4">
           <label className="block space-y-1.5">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">Your name</span>
+            <span className="label">Your name</span>
             <input
               className="input-field"
               placeholder="e.g. Maya"
@@ -73,9 +73,9 @@ export default function HomePage() {
           </button>
 
           <div className="flex items-center gap-3">
-            <div className="h-px flex-1 bg-white/10" />
-            <span className="text-[11px] uppercase tracking-[0.18em] text-muted">or join</span>
-            <div className="h-px flex-1 bg-white/10" />
+            <div className="h-px flex-1 bg-line" />
+            <span className="label">or join</span>
+            <div className="h-px flex-1 bg-line" />
           </div>
 
           <form
@@ -109,7 +109,7 @@ export default function HomePage() {
           )}
         </div>
 
-        <p className="text-center text-xs leading-relaxed text-muted">
+        <p className="text-center text-xs leading-relaxed text-gray-400">
           No accounts, no rules engine — just cards. Share the code or link with your friends.
         </p>
       </div>

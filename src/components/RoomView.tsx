@@ -57,7 +57,7 @@ export function RoomView({ roomCode, name }: { roomCode: string; name: string })
       <main className="grid flex-1 place-items-center text-sm text-muted">
         <div className="flex flex-col items-center gap-3">
           <div className="loading-cards" aria-hidden>
-            <CardFace card={{ faceUp: false }} back="red" w={46} h={62} />
+            <CardFace card={{ faceUp: false }} back="red" w={46} h={62} className="card-shadow" />
           </div>
           {connection === "reconnecting" ? "Reconnecting…" : `Joining ${roomCode}…`}
         </div>
@@ -276,7 +276,7 @@ function Board({
         onMenu={() => setSheet("room")}
       />
 
-      <div className="relative flex min-h-0 flex-1 flex-col px-2">
+      <div className="relative flex min-h-0 flex-1 flex-col">
         <TableFelt
           table={state.table}
           back={back}
@@ -294,7 +294,7 @@ function Board({
           <ActivityTicker activity={state.activity} />
           {movingStackTop && (
             <div className="absolute inset-x-0 bottom-2 z-[6000] flex justify-center px-3">
-              <div className="flex items-center gap-2 rounded-full bg-black/70 py-1 pl-3 pr-1 text-xs text-cream">
+              <div className="flex items-center gap-2 rounded-full border border-line bg-white py-1 pl-3 pr-1 text-xs font-medium text-gray-700">
                 Tap the table to place the pile — or drag it
                 <button type="button" className="chip" onClick={() => setMovingAnchor(null)}>
                   Cancel
@@ -306,7 +306,7 @@ function Board({
 
         {selectedCard && (
           <div className="absolute inset-x-2 bottom-2 z-[6000] flex justify-center">
-            <div className="sheet-panel flex items-center gap-1.5 rounded-full bg-[#121a17]/95 p-1 shadow-xl ring-1 ring-white/10">
+            <div className="sheet-panel flex items-center gap-1 rounded-full border border-line bg-white p-1">
               <button
                 type="button"
                 className="chip chip-on"
@@ -457,7 +457,7 @@ function DeckPile({
         onClick={(e) => e.preventDefault()}
       >
         {count === 0 ? (
-          <span className="absolute inset-0 rounded-[4px] border border-dashed border-white/25" />
+          <span className="absolute inset-0 rounded-[4px] border border-dashed border-gray-300" />
         ) : (
           Array.from({ length: layers }, (_, i) => (
             <CardFace
@@ -471,7 +471,7 @@ function DeckPile({
             />
           ))
         )}
-        <span className="absolute -bottom-1 -right-1 min-w-[22px] rounded-full bg-gold px-1 text-center text-[11px] font-bold leading-[18px] tabular-nums text-ink">
+        <span className="absolute -bottom-1 -right-1 min-w-[22px] rounded-full border-2 border-white bg-fg px-1 text-center text-[10px] font-bold leading-[16px] tabular-nums text-white">
           {count}
         </span>
       </button>
