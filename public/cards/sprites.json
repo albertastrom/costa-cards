@@ -1,0 +1,47 @@
+{
+  "description": "Balatro-style sprite atlas for Costa Cards. Nearest-neighbor (pixelated) scaling.",
+  "nativeCard": {
+    "width": 69,
+    "height": 93
+  },
+  "slotStep": {
+    "col": 71,
+    "row": 95,
+    "note": "sprite 69×93 plus 2px padding between cells"
+  },
+  "idFormat": "{rank}{suit}",
+  "idExamples": ["Ah", "10d", "Ks", "2c"],
+  "ranks": ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"],
+  "suits": {
+    "h": "hearts",
+    "d": "diamonds",
+    "s": "spades",
+    "c": "clubs"
+  },
+  "faces": {
+    "file": "balatro_card_design.png",
+    "sheet": { "width": 923, "height": 380 },
+    "columns": 13,
+    "rows": 4,
+    "rankOrderLeftToRight": ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"],
+    "suitOrderTopToBottom": ["h", "c", "d", "s"]
+  },
+  "backings": {
+    "file": "balatro_backings.png",
+    "sheet": { "width": 497, "height": 475 },
+    "cardBack": { "col": 0, "row": 0 },
+    "faceBase": { "col": 1, "row": 0 }
+  },
+  "render": {
+    "faceLayers": [
+      "backings faceBase (under)",
+      "faces sheet crop for rank/suit (over)"
+    ],
+    "backLayers": ["backings cardBack only"],
+    "scaleHint": {
+      "phone": 0.72,
+      "phoneComfortable": 0.78,
+      "desktop": 1.0
+    }
+  }
+}
