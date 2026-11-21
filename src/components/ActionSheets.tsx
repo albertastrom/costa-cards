@@ -25,7 +25,7 @@ function Toggle({
       onClick={() => onChange(!checked)}
       className={`chip ${checked ? "chip-on" : ""}`}
     >
-      <span className={`h-2 w-2 rounded-full ${checked ? "bg-ink" : "bg-white/30"}`} />
+      <span className={`h-2 w-2 rounded-full ${checked ? "bg-white" : "bg-gray-300"}`} />
       {label}
     </button>
   );
@@ -74,8 +74,8 @@ export function StackSheet({
           <span className="text-xs">Tip: drag the top card to move it, drag the number badge to move the pile.</span>
         </p>
       </div>
-      <div className="grid gap-2">
-        <ActionButton tone="gold" onClick={() => run({ type: "TAKE_CARD", uid: top.uid })}>
+      <div className="mb-5 grid gap-2">
+        <ActionButton tone="primary" onClick={() => run({ type: "TAKE_CARD", uid: top.uid })}>
           {n > 1 ? "Take top card" : "Take into hand"}
         </ActionButton>
         <ActionButton onClick={() => run({ type: "FLIP_CARD", uid: top.uid })}>
@@ -100,7 +100,7 @@ export function StackSheet({
       </div>
       {canDeck && (
         <SheetSection label="Back to deck">
-          <div className="mb-2 mt-4 flex flex-wrap gap-2">
+          <div className="mb-2 flex flex-wrap gap-2">
             {n > 1 && <Toggle checked={keepTop} onChange={setKeepTop} label="Keep top card" />}
             <Toggle checked={shuffle} onChange={setShuffle} label="Shuffle deck" />
           </div>
@@ -146,7 +146,7 @@ export function DeckSheet({
     <Sheet open={open} onClose={onClose} title={`Deck · ${deckCount} left`}>
       <SheetSection label="Draw">
         <div className="grid grid-cols-2 gap-2">
-          <ActionButton tone="gold" disabled={deckCount === 0} onClick={() => run({ type: "DRAW", count: 1 })}>
+          <ActionButton tone="primary" disabled={deckCount === 0} onClick={() => run({ type: "DRAW", count: 1 })}>
             Draw 1
           </ActionButton>
           <ActionButton
@@ -187,7 +187,7 @@ export function DeckSheet({
               <Toggle checked={blind} onChange={setBlind} label="Blind" />
             </div>
             <ActionButton
-              tone="gold"
+              tone="primary"
               disabled={deckCount === 0}
               onClick={() => run({ type: "DEAL", count, faceUp: !blind })}
               hint={`${count * playerCount} cards`}
@@ -217,7 +217,7 @@ export function DeckSheet({
           <ActionButton onClick={() => run({ type: "SHUFFLE" })}>Shuffle deck</ActionButton>
         </>
       ) : (
-        <p className="rounded-2xl bg-white/[0.04] p-3 text-sm text-muted">
+        <p className="rounded-xl bg-subtle p-3 text-sm text-muted">
           Only the host can deal, shuffle or turn cards onto the table. The host can switch on
           “Anyone can deal” in the room menu.
         </p>

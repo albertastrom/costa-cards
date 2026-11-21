@@ -50,7 +50,7 @@ export function HandFan({
       style={{ height: cardH + LIFT + 10, touchAction: "pan-x" }}
     >
       {n === 0 ? (
-        <p className="grid h-full place-items-center text-xs text-cream/35">
+        <p className="grid h-full place-items-center text-xs text-gray-400">
           Your hand is empty — tap the deck to draw
         </p>
       ) : (
@@ -123,10 +123,10 @@ const HandCard = memo(function HandCard({
         w={w}
         h={h}
         concealed={concealed}
-        className={`card-shadow ${selected ? "ring-2 ring-gold" : ""}`}
+        className={`card-shadow ${selected ? "ring-2 ring-fg" : ""}`}
       />
       {blind && !concealed && (
-        <span className="absolute bottom-1 left-1/2 -translate-x-1/2 rounded bg-black/60 px-1 text-[9px] font-semibold uppercase tracking-wider text-cream/80">
+        <span className="absolute bottom-1 left-1/2 -translate-x-1/2 rounded bg-fg/75 px-1 text-[9px] font-semibold uppercase tracking-wider text-white">
           blind
         </span>
       )}

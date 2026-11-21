@@ -68,7 +68,7 @@ export function DragGhost({
           className="card-shadow-lifted relative"
         />
         {hint && (
-          <span className="absolute -top-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-black/70 px-2 py-0.5 text-[11px] font-medium text-cream">
+          <span className="absolute -top-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-fg px-2 py-0.5 text-[11px] font-medium text-white">
             {hint}
           </span>
         )}

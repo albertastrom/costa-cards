@@ -3,9 +3,9 @@
 import type { ConnectionState } from "@/hooks/useRoom";
 import type { PlayerPublic } from "@/lib/types";
 
-function Crown() {
+function Crown({ me }: { me: boolean }) {
   return (
-    <svg aria-label="Host" viewBox="0 0 12 9" className="h-2.5 w-3 text-gold" fill="currentColor">
+    <svg aria-label="Host" viewBox="0 0 12 9" className={`h-2.5 w-3 ${me ? "text-amber-300" : "text-amber-500"}`} fill="currentColor">
       <path d="M0 2l3 2.5L6 0l3 4.5L12 2l-1.2 7H1.2z" />
     </svg>
   );
@@ -20,20 +20,16 @@ function Seats({ players, selfId }: { players: PlayerPublic[]; selfId: string })
           <li
             key={p.id}
             title={p.connected ? p.name : `${p.name} (disconnected)`}
-            className={`flex shrink-0 items-center gap-1.5 rounded-full py-1 pl-1 pr-2.5 text-xs ${
-              me ? "bg-gold/15 ring-1 ring-gold/40" : "bg-white/[0.06]"
-            } ${p.connected ? "" : "opacity-40 grayscale"}`}
+            className={`flex shrink-0 items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold ${
+              me ? "bg-fg text-white" : "bg-subtle text-gray-800"
+            } ${p.connected ? "" : "opacity-40"}`}
           >
+            {p.isHost && <Crown me={me} />}
+            <span className="max-w-[5.5rem] truncate">{me ? "You" : p.name}</span>
             <span
-              className={`grid h-6 w-6 place-items-center rounded-full text-[11px] font-bold ${
-                me ? "bg-gold text-ink" : "bg-felt-light text-cream"
-              }`}
+              className={`flex items-center gap-0.5 font-normal tabular-nums ${me ? "text-gray-400" : "text-muted"}`}
+              aria-label={`${p.handCount} cards`}
             >
-              {p.name.slice(0, 1).toUpperCase()}
-            </span>
-            <span className="max-w-[5.5rem] truncate font-medium text-cream">{me ? "You" : p.name}</span>
-            {p.isHost && <Crown />}
-            <span className="flex items-center gap-0.5 tabular-nums text-muted" aria-label={`${p.handCount} cards`}>
               <svg viewBox="0 0 8 10" className="h-2.5 w-2" aria-hidden>
                 <rect x="0.5" y="0.5" width="7" height="9" rx="1" fill="none" stroke="currentColor" />
               </svg>
@@ -67,19 +63,20 @@ export function TopRail({
 }) {
   const online = connection === "open";
   return (
-    <header className="flex shrink-0 items-center gap-1.5 px-2 pt-[max(0.4rem,env(safe-area-inset-top))] pb-1.5">
+    <header className="flex shrink-0 items-center gap-1 border-b border-line bg-white px-2 pt-[max(0.4rem,env(safe-area-inset-top))] pb-1.5">
       <button
         type="button"
         onClick={onInvite}
-        className="flex shrink-0 items-center gap-1.5 rounded-full bg-white/[0.06] px-2.5 py-1.5 font-mono text-xs font-semibold tracking-[0.2em] text-gold"
+        className="flex shrink-0 items-center gap-1.5 rounded-lg px-1.5 py-1.5 font-mono text-sm font-bold tracking-[0.15em] text-fg active:bg-subtle"
         aria-label={`Room ${roomCode}. Invite players`}
       >
         <span
-          className={`h-1.5 w-1.5 rounded-full ${online ? "bg-emerald-400" : "animate-pulse bg-amber-400"}`}
+          className={`h-1.5 w-1.5 rounded-full ${online ? "bg-emerald-500" : "animate-pulse bg-amber-400"}`}
           aria-label={online ? "Connected" : "Reconnecting"}
         />
         {roomCode}
       </button>
+      <div className="h-4 w-px shrink-0 bg-line" />
       <Seats players={players} selfId={selfId} />
       <button type="button" className="icon-btn" onClick={onToggleMute} aria-label={muted ? "Unmute" : "Mute"}>
         {muted ? (

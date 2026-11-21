@@ -52,7 +52,7 @@ export function RoomSheet({
   return (
     <Sheet open={open} onClose={close} title={`Room ${state.roomCode}`}>
       <div className="mb-4 grid grid-cols-2 gap-2">
-        <ActionButton tone="gold" onClick={onInvite}>
+        <ActionButton tone="primary" onClick={onInvite}>
           Invite
         </ActionButton>
         <ActionButton onClick={() => setShield(!shield)} hint={shield ? "on" : "off"}>
@@ -70,7 +70,7 @@ export function RoomSheet({
       </div>
 
       <SheetSection label={`Players · ${state.players.length}`}>
-        <ul className="divide-y divide-white/5 rounded-2xl bg-white/[0.03]">
+        <ul className="divide-y divide-line rounded-xl border border-line">
           {state.players.map((p) => {
             const self = p.id === state.playerId;
             const kickKey = `kick:${p.id}`;
@@ -79,7 +79,7 @@ export function RoomSheet({
                 <span className="min-w-0 flex-1 truncate text-sm">
                   {p.name}
                   {self && <span className="text-muted"> (you)</span>}
-                  {p.isHost && <span className="ml-1.5 text-xs text-gold">host</span>}
+                  {p.isHost && <span className="ml-1.5 text-xs font-medium text-amber-600">host</span>}
                   {!p.connected && <span className="ml-1.5 text-xs text-muted">away</span>}
                 </span>
                 <span className="text-xs tabular-nums text-muted">{p.handCount} cards</span>
@@ -124,17 +124,17 @@ export function RoomSheet({
             onClick={() =>
               act({ type: "UPDATE_SETTINGS", settings: { openDeckControls: !state.settings.openDeckControls } })
             }
-            className="mb-3 flex w-full items-center justify-between rounded-2xl bg-white/[0.04] px-4 py-3 text-left"
+            className="mb-3 flex w-full items-center justify-between gap-3 rounded-xl border border-line px-4 py-3 text-left"
           >
             <span>
               <span className="block text-[15px]">Anyone can deal</span>
               <span className="block text-xs text-muted">Let everyone shuffle, deal and reset the deck</span>
             </span>
             <span
-              className={`relative h-6 w-11 shrink-0 rounded-full transition ${state.settings.openDeckControls ? "bg-gold" : "bg-white/15"}`}
+              className={`relative h-6 w-11 shrink-0 rounded-full transition ${state.settings.openDeckControls ? "bg-fg" : "bg-gray-200"}`}
             >
               <span
-                className={`absolute top-0.5 h-5 w-5 rounded-full bg-cream transition-all ${state.settings.openDeckControls ? "left-[22px]" : "left-0.5"}`}
+                className={`absolute top-0.5 h-5 w-5 rounded-full bg-white transition-all ${state.settings.openDeckControls ? "left-[22px]" : "left-0.5"}`}
               />
             </span>
           </button>
@@ -150,9 +150,9 @@ export function RoomSheet({
                   aria-label={b.label}
                   aria-pressed={on}
                   onClick={() => act({ type: "UPDATE_SETTINGS", settings: { cardBack: b.id } })}
-                  className={`grid place-items-center rounded-xl p-1.5 transition ${on ? "bg-gold/25 ring-2 ring-gold" : "bg-white/[0.04]"}`}
+                  className={`grid place-items-center rounded-xl p-1.5 transition ${on ? "bg-subtle ring-2 ring-fg" : "bg-subtle"}`}
                 >
-                  <CardFace card={{ faceUp: false }} back={b.id} w={46} h={62} />
+                  <CardFace card={{ faceUp: false }} back={b.id} w={46} h={62} className="card-shadow" />
                 </button>
               );
             })}
@@ -168,7 +168,7 @@ export function RoomSheet({
                 key={p.id}
                 type="button"
                 onClick={() => setPicked(p.id)}
-                className={`rounded-2xl px-2 py-2 text-center transition ${preset === p.id ? "bg-gold text-ink" : "bg-white/[0.04] text-cream"}`}
+                className={`rounded-xl border px-2 py-2 text-center transition ${preset === p.id ? "border-fg bg-fg text-white" : "border-line bg-white text-fg"}`}
               >
                 <span className="block text-lg font-bold">{p.label}</span>
                 <span className="block text-[11px] opacity-75">{p.hint}</span>

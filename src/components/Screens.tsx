@@ -6,9 +6,9 @@ import { MAX_NAME_LENGTH } from "@/lib/types";
 
 function Panel({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <main className="screen-bg flex flex-1 items-center justify-center px-4 py-10">
-      <div className="panel w-full max-w-sm space-y-4 rounded-3xl p-6">
-        <h1 className="text-center text-lg font-semibold text-cream">{title}</h1>
+    <main className="flex flex-1 items-center justify-center px-4 py-10">
+      <div className="w-full max-w-xs space-y-4">
+        <h1 className="text-center text-xl font-bold tracking-tight text-fg">{title}</h1>
         {children}
       </div>
     </main>

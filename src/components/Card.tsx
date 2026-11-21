@@ -64,12 +64,14 @@ export const CardFace = memo(function CardFace({
   const showFace = card.faceUp && !!card.rank && !!card.suit && !concealed;
   const joker = showFace && isJoker(card.rank, card.suit);
   const rect = showFace && !joker ? faceRect(card.rank!, card.suit!) : null;
+  // Callers that stack layers pass `absolute`; don't let a default `relative` override it.
+  const position = /\babsolute\b/.test(className) ? "" : "relative";
 
   return (
     <div
       role="img"
       aria-label={showFace ? spokenCardName(card.rank, card.suit) : "Face-down card"}
-      className={`card-face relative ${className}`}
+      className={`card-face ${position} ${className}`}
       style={{ width: w, height: h, ...style }}
     >
       {/* key on visibility so a reveal replays the flip animation */}
